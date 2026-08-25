@@ -66,3 +66,19 @@ document.getElementById("goBackButton").addEventListener("click", function() {
     document.getElementById("timerSection").classList.add("hidden"); 
     document.getElementById("options").classList.remove("hidden"); 
 });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const elements = document.querySelectorAll('.btn, .choice, .choice img');
+        elements.forEach(elem => {
+            elem.addEventListener('mouseenter', () => {
+                const audio = document.getElementById('timerHoverAudio');
+                audio.currentTime = 0;
+                audio.play().catch(e => {});
+            });
+            elem.addEventListener('click', () => {
+                const audio = document.getElementById('timerClickAudio');
+                audio.currentTime = 0;
+                audio.play().catch(e => {});
+            });
+        });
+    });

@@ -6,10 +6,13 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<!-- Додали onclick для відтворення загального кліку на всьому сайті -->
+<body onclick="playGeneralClick(event)">
 
-    <!-- Тег для відтворення звуку при наведенні -->
-    <audio id="hoverAudio" src="hover-sound.wav" preload="auto"></audio>
+    <!-- Теги для аудіофайлів головної сторінки -->
+    <audio id="hoverAudio" src="hover.wav" preload="auto"></audio>
+    <audio id="pageClickAudio" src="page-click.wav" preload="auto"></audio>
+    <audio id="generalClickAudio" src="general-click.mp3" preload="auto"></audio>
 
     <header class="header">
         <h1 class="logo">Your Name / Nickname</h1>
@@ -18,7 +21,7 @@
 
     <div class="main-layout">
         
-        <!-- LEFT COLUMN: Brutalist Rectangular Cards -->
+        <!-- LEFT COLUMN: Main Projects List -->
         <main class="portfolio-container">
             <div class="portfolio-card" onmouseenter="playHoverSound()">
                 <div class="card-content">
@@ -37,10 +40,10 @@
             </div>
         </main>
 
-        <!-- RIGHT COLUMN: Invisible Widget (Only Pixel Borders Move) -->
+        <!-- RIGHT COLUMN: Culinary Timer Widget -->
         <aside class="sidebar">
-            <!-- Додали тригер звуку onmouseenter -->
-            <a href="timer.html" class="timer-widget" onmouseenter="playHoverSound()">
+            <!-- Додали id="timerWidget" та onclick ефект -->
+            <a href="timer.html" id="timerWidget" class="timer-widget" onmouseenter="playHoverSound()" onclick="playPageClick(event)">
                 <div class="widget-flower">🌸</div>
                 <span class="widget-badge">My App ✨</span>
                 <h2>Cooking Timer</h2>
@@ -55,13 +58,44 @@
         <p>© 2026 All Rights Reserved | Crafted with love</p>
     </footer>
 
-    <!-- Скрипт для відтворення звуку -->
+    <!-- Скрипти для керування звуками -->
     <script>
-        function playHoverSound() {
-            const audio = document.getElementById('hoverAudio');
-            audio.currentTime = 0; // Скидаємо звук на початок, якщо швидко водити мишкою
-            audio.play().catch(e => console.log("Audio play blocked until user interacts with the page."));
+    function playHoverSound() {
+        const audio = document.getElementById('hoverAudio');
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log("Audio blocked"));
+    }
+
+    // Звук переходу на сторінку таймера (ПОВНІСТЮ ВИПРАВЛЕНО)
+    function playPageClick(event) {
+        event.stopPropagation(); // Зупиняє загальний клік на фоні сайту
+        event.preventDefault();  // Скасовує миттєвий перехід браузера
+
+        const audio = document.getElementById('pageClickAudio');
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log("Audio blocked"));
+        
+        // НАДІЙНИЙ СПОСІБ: Беремо посилання строго з нашого віджета за його ID
+        const widget = document.getElementById('timerWidget');
+        if (widget) {
+            const targetUrl = widget.getAttribute('href'); // Отримуємо "timer.html"
+            
+            // Затримка 150мс, щоб встиг прозвучати клік, і примусовий перехід
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 150);
+        } else {
+            console.error("Елемент з id='timerWidget' не знайдено на сторінці!");
         }
-    </script>
+    }
+
+    // Загальний звук кліку на все інше
+    function playGeneralClick(event) {
+        const audio = document.getElementById('generalClickAudio');
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log("Audio blocked"));
+    }
+</script>
+
 </body>
 </html>
