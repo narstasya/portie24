@@ -236,9 +236,19 @@ a, .portfolio-card {
 }
 
 .popup-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    width: 64px; /* Чіткий розмір для нашої іконки */
+    height: 64px;
+    margin: 0 auto 1.5rem auto;
 }
+
+.popup-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Головне правило для ретро-іконок: браузер не буде згладжувати пікселі */
+    image-rendering: pixelated; 
+}
+
 
 .popup-content h2 {
     margin: 0 0 0.8rem 0;
