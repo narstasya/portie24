@@ -81,18 +81,20 @@ a, .portfolio-card {
 }
 
 /* Твій ідеальний віджет таймера (Повністю прозорий, тільки рисочки) */
+/* ПРАВА КОЛОНКА: Контейнер-віджет */
 .timer-widget {
     display: block;
     text-decoration: none;
-    background: transparent; /* ПРИБРАНО прямокутник з гладкими кутами */
-    border-radius: 0px; /* Тільки гострі кути */
-    padding: 2rem 1.5rem;
+    background: transparent;
+    border-radius: 0px; 
+    padding: 3rem 1.5rem;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    /* КЛЮЧОВЕ НАЛАШТУВАННЯ: дозволяє іконкам виходити за межі рамки */
+    overflow: visible; 
     transition: transform 0.25s ease;
     
-    /* Створюємо піксельну рамку */
+    /* Твоя крута піксельна рамка */
     background-image: linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(0deg, #7C4C4C 50%, transparent 50%), 
@@ -105,41 +107,76 @@ a, .portfolio-card {
     image-rendering: crisp-edges;
 }
 
-/* Ідеально синхронізована зациклена анімація для всіх 4 сторін */
-@keyframes moveBorders {
-    0% {
-        background-position: 0 0, 0 100%, 0 0, 100% 0;
-    }
-    100% {
-        /* Зсув відбувається абсолютно однаково з усіх боків */
-        background-position: 16px 0, -16px 100%, 0 -16px, 100% 16px; 
-    }
+/* ЗАГАЛЬНИЙ КЛАС ДЛЯ ВСІХ ПЛАВАЮЧИХ ІКОНОК */
+.floating-icon {
+    position: absolute;
+    z-index: 10;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ІНТЕРАКТИВНІСТЬ ДЛЯ ВІДЖЕТА */
+.floating-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+}
+
+/* 1. РОЗМІЩЕННЯ ДІАМАНТА (Зверху по центру, вилізає вгору) */
+.icon-diamond {
+    width: 44px;
+    height: 44px;
+    top: -25px;
+    left: calc(50% - 22px);
+}
+
+/* 2. РОЗМІЩЕННЯ ПІСОЧНОГО ГОДИННИКА (Знизу, вилізає за край) */
+.icon-hourglass {
+    width: 55px;
+    height: 55px;
+    bottom: -25px;
+    left: calc(50% - 27px);
+}
+
+/* 3. РОЗМІЩЕННЯ СПАРКЛА 1 (Зліва посередині, вилізає наполовину) */
+.icon-sparkle-1 {
+    width: 24px;
+    height: 24px;
+    top: 40%;
+    left: -12px;
+}
+
+/* 4. РОЗМІЩЕННЯ СПАРКЛА 2 (Справа внизу, трохи всередині) */
+.icon-sparkle-2 {
+    width: 16px;
+    height: 16px;
+    bottom: 40px;
+    right: 15px;
+}
+
+/* --- ІНТЕРАКТИВНІСТЬ НАВЕДЕННЯ НА ВІДЖЕТ --- */
 .timer-widget:hover {
-    transform: scale(1.05); /* Тільки чисте збільшення */
-    /* Вмикаємо нескінченний біг ліній (1 секунда на повний цикл) */
-    animation: moveBorders 1s linear infinite; 
+    transform: scale(1.04); 
+    animation: moveBorders 1s linear infinite; /* Запуск бігучих штрихів */
 }
 
-/* Квіточка крутиться при наведенні */
-.timer-widget:hover .widget-flower {
+/* При наведенні діамант крутиться навколо осі */
+.timer-widget:hover .icon-diamond {
     transform: rotate(360deg) scale(1.2);
 }
 
-/* Пісочний годинник підстрибує */
-.timer-widget:hover .widget-icon {
-    transform: translateY(-6px);
+/* При наведенні годинник підстрибує */
+.timer-widget:hover .icon-hourglass {
+    transform: translateY(-8px) scale(1.1);
 }
 
-/* Внутрішній декор */
-.widget-flower {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    display: inline-block;
-    transition: transform 0.4s ease-in-out;
+/* Спарки весело збільшуються */
+.timer-widget:hover .icon-sparkle-1 {
+    transform: scale(1.4) rotate(-15deg);
 }
+.timer-widget:hover .icon-sparkle-2 {
+    transform: scale(1.3) rotate(45deg);
+}
+
 
 .widget-badge {
     background-color: #DFF2CE;
