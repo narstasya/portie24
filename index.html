@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio 24/25</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Website Header -->
+    <!-- Тег для відтворення звуку при наведенні -->
+    <audio id="hoverAudio" src="hover-sound.wav" preload="auto"></audio>
+
     <header class="header">
-        <h1 class="logo">Anastasiia Naryshkina</h1>
-        <p class="subtitle">Welcome! This is a collection of my projects and documentation *^_^*</p>
+        <h1 class="logo">Your Name / Nickname</h1>
+        <p class="subtitle">Welcome! This is a collection of my projects and documentation</p>
     </header>
 
-    <!-- Main Two-Column Layout -->
     <div class="main-layout">
         
-        <!-- LEFT COLUMN: Main Projects List -->
+        <!-- LEFT COLUMN: Brutalist Rectangular Cards -->
         <main class="portfolio-container">
-            
-            <!-- Project Card #1 -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onmouseenter="playHoverSound()">
                 <div class="card-content">
                     <h2>University Documentation</h2>
-                    <p>blablabla</p>
+                    <p>A structured description of laboratory works and study materials synced with GitHub.</p>
                 </div>
                 <div class="card-icon">01</div>
             </div>
 
-            <!-- Project Card #2 -->
-            <div class="portfolio-card">
+            <div class="portfolio-card" onmouseenter="playHoverSound()">
                 <div class="card-content">
                     <h2>Project Name</h2>
-                    <p>blablabla</p>
+                    <p>A brief overview of what you built here. Mention the technologies used.</p>
                 </div>
                 <div class="card-icon">02</div>
             </div>
-
         </main>
 
-        <!-- RIGHT COLUMN: Culinary Timer Widget -->
+        <!-- RIGHT COLUMN: Invisible Widget (Only Pixel Borders Move) -->
         <aside class="sidebar">
-            <a href="timer.html" class="timer-widget">
-                <div class="widget-flower">🌸</div> <!-- Your cute flower -->
+            <!-- Додали тригер звуку onmouseenter -->
+            <a href="timer.html" class="timer-widget" onmouseenter="playHoverSound()">
+                <div class="widget-flower">🌸</div>
                 <span class="widget-badge">My App ✨</span>
                 <h2>Cooking Timer</h2>
                 <p>Click here to choose your meal and start the interactive cooking countdown!</p>
@@ -53,10 +51,17 @@
 
     </div>
 
-    <!-- Website Footer -->
     <footer class="footer">
-        <p> 2026 Crafted with love</p>
+        <p>© 2026 All Rights Reserved | Crafted with love</p>
     </footer>
 
+    <!-- Скрипт для відтворення звуку -->
+    <script>
+        function playHoverSound() {
+            const audio = document.getElementById('hoverAudio');
+            audio.currentTime = 0; // Скидаємо звук на початок, якщо швидко водити мишкою
+            audio.play().catch(e => console.log("Audio play blocked until user interacts with the page."));
+        }
+    </script>
 </body>
 </html>

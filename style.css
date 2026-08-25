@@ -1,6 +1,6 @@
-/* 1. ВИПРАВЛЕНО: Правильне підключення англійського шрифту */
 @import url('https://googleapis.com');
 
+/* Головні налаштування + кастомний ретро-курсор */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: #faf6f6; 
@@ -8,13 +8,21 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Міняємо стандартну стрілочку миші на піксельний вказівник від браузера */
+    cursor: cell; 
+}
+
+/* Робимо посилання теж з кастомним курсором */
+a, .portfolio-card {
+    cursor: crosshair; /* Курсор при наведенні на клікабельні елементи */
 }
 
 .header {
     background-color: #f2cece; 
     text-align: center;
     padding: 3rem 1.5rem;
-    border-bottom: 4px solid #DAACAC;
+    /* Жорстка бруталістська лінія знизу */
+    border-bottom: 4px solid #7C4C4C; 
 }
 
 .header h1 {
@@ -35,7 +43,7 @@ body {
     align-items: start;
 }
 
-/* LEFT COLUMN: Main Projects */
+/* LEFT COLUMN: Rectangular Brutalist Cards */
 .portfolio-container {
     display: flex;
     flex-direction: column;
@@ -44,45 +52,47 @@ body {
 
 .portfolio-card {
     background: white;
-    border: 3px solid #DAACAC;
-    border-radius: 16px;
+    /* Прибираємо круглі кути, робимо 100% прямокутник */
+    border: 4px solid #7C4C4C; 
+    border-radius: 0px; 
     padding: 1.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .portfolio-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(124, 76, 76, 0.08);
+    /* Чітка тінь без розмиття в стилі ретро-ігор */
+    box-shadow: 8px 8px 0px #DAACAC; 
 }
 
 .card-icon {
     font-size: 1.5rem;
     font-weight: bold;
-    opacity: 0.3;
+    color: #7C4C4C;
 }
 
-/* RIGHT COLUMN: Sidebar (Sticky position setup) */
+/* RIGHT COLUMN: Sidebar Setup */
 .sidebar {
     position: sticky;
     top: 2rem; 
 }
 
-/* RIGHT COLUMN: Sidebar Timer Widget */
+/* Твій ідеальний віджет таймера (Повністю прозорий, тільки рисочки) */
 .timer-widget {
     display: block;
     text-decoration: none;
-    background: #fff5f5;
-    border-radius: 0px; /* Повністю прямокутні піксельні кути */
+    background: transparent; /* ПРИБРАНО прямокутник з гладкими кутами */
+    border-radius: 0px; /* Тільки гострі кути */
     padding: 2rem 1.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    transition: transform 0.25s ease;
     
-    /* Створюємо піксельну рамку за допомогою градієнта */
+    /* Створюємо піксельну рамку */
     background-image: linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(0deg, #7C4C4C 50%, transparent 50%), 
@@ -95,27 +105,22 @@ body {
     image-rendering: crisp-edges;
 }
 
-/* Анімація нескінченного руху ліній */
+/* Ідеально синхронізована зациклена анімація для всіх 4 сторін */
 @keyframes moveBorders {
     0% {
-        /* Початкова позиція для кожної з 4 сторін */
         background-position: 0 0, 0 100%, 0 0, 100% 0;
     }
     100% {
-        /* Зсуваємо всі сторони рівномірно на 16px (ширину одного штриха) */
-        /* Знаки плюс та мінус змушують лінії бігти по колу в один бік */
+        /* Зсув відбувається абсолютно однаково з усіх боків */
         background-position: 16px 0, -16px 100%, 0 -16px, 100% 16px; 
     }
 }
 
-/* ІНТЕРАКТИВНІСТЬ ДЛЯ ВІДЖЕТА (Лише один чистий блок) */
+/* ІНТЕРАКТИВНІСТЬ ДЛЯ ВІДЖЕТА */
 .timer-widget:hover {
-    transform: scale(1.04); 
-    box-shadow: 0 12px 24px rgba(124, 76, 76, 0.12);
-    background-color: white; 
-    
-    /* Змінив час з 2s на 1s, щоб рух був чітким і синхронним */
-    animation: moveBorders 0.5s linear infinite; 
+    transform: scale(1.05); /* Тільки чисте збільшення */
+    /* Вмикаємо нескінченний біг ліній (1 секунда на повний цикл) */
+    animation: moveBorders 1s linear infinite; 
 }
 
 /* Квіточка крутиться при наведенні */
@@ -125,15 +130,15 @@ body {
 
 /* Пісочний годинник підстрибує */
 .timer-widget:hover .widget-icon {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 }
 
-/* Елементи всередині віджета */
+/* Внутрішній декор */
 .widget-flower {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 0.5rem;
     display: inline-block;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .widget-badge {
@@ -141,7 +146,8 @@ body {
     color: #85AB61;
     font-weight: bold;
     padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    border-radius: 0px; /* Квадратний бадж */
+    border: 2px solid #85AB61;
     font-size: 0.8rem;
     display: inline-block;
     margin-bottom: 1rem;
@@ -151,11 +157,12 @@ body {
     margin: 0 0 0.5rem 0;
     color: #7C4C4C;
     font-size: 1.4rem;
+    font-weight: 800;
 }
 
 .timer-widget p {
     font-size: 0.95rem;
-    color: #9c6868;
+    color: #7C4C4C;
     line-height: 1.4;
     margin: 0 0 1.5rem 0;
 }
@@ -171,7 +178,7 @@ body {
     color: #DAACAC;
 }
 
-/* Responsive view for phones */
+/* Адаптивність */
 @media (max-width: 800px) {
     .main-layout {
         grid-template-columns: 1fr;
