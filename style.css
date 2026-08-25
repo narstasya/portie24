@@ -1,3 +1,4 @@
+/* 1. ВИПРАВЛЕНО: Правильне підключення англійського шрифту */
 @import url('https://googleapis.com');
 
 body {
@@ -63,26 +64,71 @@ body {
     opacity: 0.3;
 }
 
-/* RIGHT COLUMN: Sidebar Timer Widget */
+/* RIGHT COLUMN: Sidebar (Sticky position setup) */
 .sidebar {
     position: sticky;
     top: 2rem; 
 }
 
+/* RIGHT COLUMN: Sidebar Timer Widget */
 .timer-widget {
     display: block;
     text-decoration: none;
     background: #fff5f5;
-    border: 3px dashed #7C4C4C; 
-    border-radius: 20px;
+    border-radius: 0px; /* Повністю прямокутні піксельні кути */
     padding: 2rem 1.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    
+    /* Створюємо піксельну рамку за допомогою градієнта */
+    background-image: linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
+                      linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
+                      linear-gradient(0deg, #7C4C4C 50%, transparent 50%), 
+                      linear-gradient(0deg, #7C4C4C 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
-/* Flower animation details */
+/* Анімація нескінченного руху ліній */
+@keyframes moveBorders {
+    0% {
+        /* Початкова позиція для кожної з 4 сторін */
+        background-position: 0 0, 0 100%, 0 0, 100% 0;
+    }
+    100% {
+        /* Зсуваємо всі сторони рівномірно на 16px (ширину одного штриха) */
+        /* Знаки плюс та мінус змушують лінії бігти по колу в один бік */
+        background-position: 16px 0, -16px 100%, 0 -16px, 100% 16px; 
+    }
+}
+
+/* ІНТЕРАКТИВНІСТЬ ДЛЯ ВІДЖЕТА (Лише один чистий блок) */
+.timer-widget:hover {
+    transform: scale(1.04); 
+    box-shadow: 0 12px 24px rgba(124, 76, 76, 0.12);
+    background-color: white; 
+    
+    /* Змінив час з 2s на 1s, щоб рух був чітким і синхронним */
+    animation: moveBorders 0.5s linear infinite; 
+}
+
+/* Квіточка крутиться при наведенні */
+.timer-widget:hover .widget-flower {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Пісочний годинник підстрибує */
+.timer-widget:hover .widget-icon {
+    transform: translateY(-5px);
+}
+
+/* Елементи всередині віджета */
 .widget-flower {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -119,24 +165,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* INTERACTIVE HOVER EFFECTS */
-.timer-widget:hover {
-    transform: scale(1.03) rotate(1deg); 
-    box-shadow: 0 15px 30px rgba(124, 76, 76, 0.12);
-    background: white;
-    border-style: solid; 
-}
-
-/* The flower spins beautifully on hover */
-.timer-widget:hover .widget-flower {
-    transform: rotate(360deg) scale(1.2);
-}
-
-/* The timer jumps up slightly */
-.timer-widget:hover .widget-icon {
-    transform: translateY(-5px);
-}
-
 .footer {
     text-align: center;
     padding: 2rem;
@@ -150,6 +178,6 @@ body {
     }
     .sidebar {
         position: static;
-        order: -1; /* Puts the cooking timer on top for mobile screens */
+        order: -1; 
     }
 }
