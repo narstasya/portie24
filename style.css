@@ -74,34 +74,39 @@ a, .portfolio-card {
     color: #7C4C4C;
 }
 
-/* RIGHT COLUMN: Sidebar Setup */
+/* /* RIGHT COLUMN: Sidebar Setup */ */
 .sidebar {
     position: sticky;
     top: 2rem; 
 }
 
-/* Твій ідеальний віджет таймера (Повністю прозорий, тільки рисочки) */
 /* ПРАВА КОЛОНКА: Контейнер-віджет */
 .timer-widget {
     display: block;
     text-decoration: none;
-    background: transparent;
     border-radius: 0px; 
     padding: 3rem 1.5rem;
     text-align: center;
     position: relative;
-    /* КЛЮЧОВЕ НАЛАШТУВАННЯ: дозволяє іконкам виходити за межі рамки */
     overflow: visible; 
-    transition: transform 0.25s ease;
+    
+    /* Додали background-color сюди, щоб анімація та змінна працювали стабільно */
+    background-color: var(--widget-bg, #fff5f5);
+    --widget-bg: #fff5f5; 
     
     /* Твоя крута піксельна рамка */
     background-image: linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(90deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(0deg, #7C4C4C 50%, transparent 50%), 
                       linear-gradient(0deg, #7C4C4C 50%, transparent 50%);
+    
+    /* Чотири значення для чотирьох ліній */
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
     background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
     background-position: 0 0, 0 100%, 0 0, 100% 0;
+    
+    /* Плавний перехід кольору фону та збільшення */
+    transition: transform 0.25s ease, background-color 0.25s ease;
     
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -121,53 +126,76 @@ a, .portfolio-card {
     image-rendering: pixelated;
 }
 
-/* 1. РОЗМІЩЕННЯ ДІАМАНТА (Зверху по центру, вилізає вгору) */
+/* 1. РОЗМІЩЕННЯ ДІАМАНТА */
 .icon-diamond {
     width: 44px;
     height: 44px;
     top: -25px;
     left: calc(50% - 22px);
+    background-color: #fff5f5; 
+    padding: 4px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.25s ease;
 }
 
-/* 2. РОЗМІЩЕННЯ ПІСОЧНОГО ГОДИННИКА (Знизу, вилізає за край) */
+/* 2. РОЗМІЩЕННЯ ПІСОЧНОГО ГОДИННИКА */
 .icon-hourglass {
     width: 55px;
     height: 55px;
     bottom: -25px;
     left: calc(50% - 27px);
+    background-color: #fff5f5; 
+    padding: 4px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.25s ease;
 }
 
-/* 3. РОЗМІЩЕННЯ СПАРКЛА 1 (Зліва посередині, вилізає наполовину) */
+/* 3. РОЗМІЩЕННЯ СПАРКЛА 1 */
 .icon-sparkle-1 {
     width: 24px;
     height: 24px;
-    top: 40%;
-    left: -12px;
+    top: 30%;
+    left: 20px;
 }
 
-/* 4. РОЗМІЩЕННЯ СПАРКЛА 2 (Справа внизу, трохи всередині) */
+.icon-sparkle-1 svg path {
+    fill: #7C4C4C;  
+}
+
+/* 4. РОЗМІЩЕННЯ СПАРКЛА 2 */
 .icon-sparkle-2 {
-    width: 16px;
-    height: 16px;
-    bottom: 40px;
-    right: 15px;
+    width: 24px;
+    height: 24px;
+    bottom: 35px;
+    right: 12px;
+}
+
+.icon-sparkle-2 svg rect {
+    fill: #7C4C4C; 
 }
 
 /* --- ІНТЕРАКТИВНІСТЬ НАВЕДЕННЯ НА ВІДЖЕТ --- */
 .timer-widget:hover {
     transform: scale(1.04); 
+    background-color: #ffffff; /* Пряме перефарбування без багів */
     animation: moveBorders 1s linear infinite; /* Запуск бігучих штрихів */
 }
 
 /* При наведенні діамант крутиться навколо осі */
+/* При наведенні на віджет — діамант крутиться, а його фон біліє ЛИШЕ в нижній половині */
 .timer-widget:hover .icon-diamond {
     transform: rotate(360deg) scale(1.2);
+    /* 50% зверху прозоро (за бортом), 50% знизу білий фон (всередині віджета) */
+    background: linear-gradient(to bottom, transparent 50%, #ffffff 50%);
 }
 
-/* При наведенні годинник підстрибує */
+/* При наведенні на віджет — годинник підстрибує, а білий фон закриває риски */
 .timer-widget:hover .icon-hourglass {
     transform: translateY(-8px) scale(1.1);
+    /* Збільшили білу зону до 38px, щоб при стрибку вгору вона все одно повністю перекривала риски */
+    background: linear-gradient(to bottom, #ffffff 38px, transparent 38px);
 }
+
 
 /* Спарки весело збільшуються */
 .timer-widget:hover .icon-sparkle-1 {
@@ -177,13 +205,22 @@ a, .portfolio-card {
     transform: scale(1.3) rotate(45deg);
 }
 
+/* АНІМАЦІЯ ДЛЯ РУХУ РИСOЧОК */
+@keyframes moveBorders {
+    0% {
+        background-position: 0 0, 0 100%, 0 0, 100% 0;
+    }
+    100% {
+        background-position: 16px 0, -16px 100%, 0 -16px, 100% 16px; 
+    }
+}
 
 .widget-badge {
     background-color: #DFF2CE;
     color: #85AB61;
     font-weight: bold;
     padding: 0.3rem 0.8rem;
-    border-radius: 0px; /* Квадратний бадж */
+    border-radius: 0px; 
     border: 2px solid #85AB61;
     font-size: 0.8rem;
     display: inline-block;
@@ -208,6 +245,7 @@ a, .portfolio-card {
     font-size: 3rem;
     transition: transform 0.3s ease;
 }
+
 
 .footer {
     text-align: center;
