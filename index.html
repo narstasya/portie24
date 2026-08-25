@@ -9,6 +9,24 @@
 <!-- Додали onclick для відтворення загального кліку на всьому сайті -->
 <body onclick="playGeneralClick(event)">
 
+    <!-- RETRO POPUP FOR SOUND ACTIVATION -->
+<div id="soundPopup" class="popup-overlay">
+    <div class="popup-box">
+        <div class="popup-header">
+            <span class="popup-dot"></span>
+            <span class="popup-dot"></span>
+            <span class="popup-dot"></span>
+        </div>
+        <div class="popup-content">
+            <div class="popup-icon">🔊</div>
+            <h2>⚠️ NOTICE</h2>
+            <p>Please turn on the sound for the best and most interactive experience!</p>
+            <button id="enableSoundBtn" class="popup-btn">UNMUTE & ENTER</button>
+        </div>
+    </div>
+</div>
+
+
     <!-- Теги для аудіофайлів головної сторінки -->
     <audio id="hoverAudio" src="hover.wav" preload="auto"></audio>
     <audio id="pageClickAudio" src="page-click.wav" preload="auto"></audio>
@@ -60,6 +78,35 @@
 
     <!-- Скрипти для керування звуками -->
     <script>
+
+// Логіка для попапу звуку
+    document.addEventListener("DOMContentLoaded", () => {
+        const popup = document.getElementById('soundPopup');
+        const btn = document.getElementById('enableSoundBtn');
+
+        btn.addEventListener('click', () => {
+            // "Прогріваємо" всі звуки німим стартом, щоб браузер дозволив їх відтворювати далі
+            const sounds = [
+                document.getElementById('hoverAudio'),
+                document.getElementById('pageClickAudio'),
+                document.getElementById('generalClickAudio')
+            ];
+            
+            sounds.forEach(sound => {
+                if (sound) {
+                    sound.play().then(() => {
+                        sound.pause();
+                        sound.currentTime = 0;
+                    }).catch(e => console.log("Audio prep failed", e));
+                }
+            });
+
+            // Ховаємо попап
+            popup.style.display = 'none';
+        });
+    });
+
+
     function playHoverSound() {
         const audio = document.getElementById('hoverAudio');
         audio.currentTime = 0;
