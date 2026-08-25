@@ -1,55 +1,61 @@
-    <!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio WiSe 24/25</title>
+    <title>My Portfolio 24/25</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Шапка сайту -->
+    <!-- Website Header -->
     <header class="header">
         <h1 class="logo">Anastasiia Naryshkina</h1>
-        <p class="subtitle">Hello! This is a collection of my unique works and documentation *^_^*</p>
+        <p class="subtitle">Welcome! This is a collection of my projects and documentation *^_^*</p>
     </header>
 
-    <!-- Секція з роботами -->
-    <main class="portfolio-container">
+    <!-- Main Two-Column Layout -->
+    <div class="main-layout">
         
-        <!-- Картка №1: Твій таймер -->
-        <a href="timer.html" class="portfolio-card highlight-card">
-            <div class="card-content">
-                <span class="badge">New Release 🔥</span>
+        <!-- LEFT COLUMN: Main Projects List -->
+        <main class="portfolio-container">
+            
+            <!-- Project Card #1 -->
+            <div class="portfolio-card">
+                <div class="card-content">
+                    <h2>University Documentation</h2>
+                    <p>blablabla</p>
+                </div>
+                <div class="card-icon">01</div>
+            </div>
+
+            <!-- Project Card #2 -->
+            <div class="portfolio-card">
+                <div class="card-content">
+                    <h2>Project Name</h2>
+                    <p>blablabla</p>
+                </div>
+                <div class="card-icon">02</div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT COLUMN: Culinary Timer Widget -->
+        <aside class="sidebar">
+            <a href="timer.html" class="timer-widget">
+                <div class="widget-flower">🌸</div> <!-- Your cute flower -->
+                <span class="widget-badge">My App ✨</span>
                 <h2>Cooking Timer</h2>
-                <p>Interactive app with 4 different cooking times. Click and test!</p>
-            </div>
-            <div class="card-icon">⏳</div>
-        </a>
+                <p>Click here to choose your meal and start the interactive cooking countdown!</p>
+                <div class="widget-icon">⏳</div>
+            </a>
+        </aside>
 
-        <!-- Картка №2: Тут буде твоя інша робота -->
-        <div class="portfolio-card">
-            <div class="card-content">
-                <h2>Project Title</h2>
-                <p>A brief description of what you did here. Technologies used and the task at hand.</p>
-            </div>
-            <div class="card-icon">💻</div>
-        </div>
+    </div>
 
-        <!-- Картка №3: Ще один проект або документація -->
-        <div class="portfolio-card">
-            <div class="card-content">
-                <h2>University Documentation</h2>
-                <p>Description of lab reports, exercises, or summaries linked to your GitHub.</p>
-            </div>
-            <div class="card-icon">📝</div>
-        </div>
-
-    </main>
-
-    <!-- Підвал сайту -->
+    <!-- Website Footer -->
     <footer class="footer">
-        <p>© 2026 Всі права захищені | Зроблено з любов'ю</p>
+        <p> 2026 Crafted with love</p>
     </footer>
 
 </body>

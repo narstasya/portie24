@@ -1,19 +1,16 @@
-/* Підключаємо сучасний, чистий шрифт Plus Jakarta Sans */
 @import url('https://googleapis.com');
 
-/* Загальні налаштування */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #faf6f6; /* Дуже м'який біло-рожевий відтінок для фону */
+    background-color: #faf6f6; 
     color: #7C4C4C;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Шапка */
 .header {
-    background-color: #f2cece; /* Твій фірмовий колір контейнера */
+    background-color: #f2cece; 
     text-align: center;
     padding: 3rem 1.5rem;
     border-bottom: 4px solid #DAACAC;
@@ -26,29 +23,24 @@ body {
     font-weight: 800;
 }
 
-.header .subtitle {
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    color: #7C4C4C;
-    opacity: 0.9;
-}
-
-/* Контейнер для карток */
-.portfolio-container {
-    max-width: 900px;
+/* TWO-COLUMN GRID SETUP */
+.main-layout {
+    max-width: 1100px;
     margin: 3rem auto;
     padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 2rem;
+    align-items: start;
+}
+
+/* LEFT COLUMN: Main Projects */
+.portfolio-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Відступи між картками */
+    gap: 1.5rem;
 }
 
-/* Стиль картки-посилання */
-a.portfolio-card {
-    text-decoration: none; /* Прибираємо підкреслення тексту */
-}
-
-/* Сама картка */
 .portfolio-card {
     background: white;
     border: 3px solid #DAACAC;
@@ -57,76 +49,107 @@ a.portfolio-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    /* Плавний перехід для анімації наведення */
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Текст всередині картки */
-.card-content h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.4rem;
-    color: #7C4C4C;
+.portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(124, 76, 76, 0.08);
 }
 
-.card-content p {
-    margin: 0;
-    font-size: 1rem;
-    color: #9c6868;
-    line-height: 1.5;
-}
-
-/* Іконка праворуч */
 .card-icon {
-    font-size: 2.5rem;
-    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0.3;
 }
 
-/* Бадж "Новинка" для таймера */
-.badge {
+/* RIGHT COLUMN: Sidebar Timer Widget */
+.sidebar {
+    position: sticky;
+    top: 2rem; 
+}
+
+.timer-widget {
+    display: block;
+    text-decoration: none;
+    background: #fff5f5;
+    border: 3px dashed #7C4C4C; 
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Flower animation details */
+.widget-flower {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    transition: transform 0.5s ease-in-out;
+}
+
+.widget-badge {
     background-color: #DFF2CE;
     color: #85AB61;
     font-weight: bold;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
     font-size: 0.8rem;
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-/* ЕФЕКТИ НАВЕДЕННЯ (Твоя інтерактивність) */
-.portfolio-card:hover {
-    transform: translateY(-5px); /* Картка плавно піднімається вгору */
-    box-shadow: 0 12px 24px rgba(124, 76, 76, 0.15); /* М'яка кольорова тінь */
-    border-color: #7C4C4C; /* Рамка стає темнішою */
+.timer-widget h2 {
+    margin: 0 0 0.5rem 0;
+    color: #7C4C4C;
+    font-size: 1.4rem;
 }
 
-/* При наведенні на картку, іконка всередині неї трохи збільшується */
-.portfolio-card:hover .card-icon {
-    transform: scale(1.2) rotate(5deg);
+.timer-widget p {
+    font-size: 0.95rem;
+    color: #9c6868;
+    line-height: 1.4;
+    margin: 0 0 1.5rem 0;
 }
 
-/* Особливий стиль для картки з таймером, щоб виділити її */
-.highlight-card {
-    background: linear-gradient(145deg, #ffffff, #fff5f5);
+.widget-icon {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
 }
 
-/* Підвал */
+/* INTERACTIVE HOVER EFFECTS */
+.timer-widget:hover {
+    transform: scale(1.03) rotate(1deg); 
+    box-shadow: 0 15px 30px rgba(124, 76, 76, 0.12);
+    background: white;
+    border-style: solid; 
+}
+
+/* The flower spins beautifully on hover */
+.timer-widget:hover .widget-flower {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* The timer jumps up slightly */
+.timer-widget:hover .widget-icon {
+    transform: translateY(-5px);
+}
+
 .footer {
     text-align: center;
     padding: 2rem;
-    font-size: 0.9rem;
     color: #DAACAC;
 }
 
-/* Адаптивність для телефонів */
-@media (max-width: 600px) {
-    .portfolio-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+/* Responsive view for phones */
+@media (max-width: 800px) {
+    .main-layout {
+        grid-template-columns: 1fr;
     }
-    .card-icon {
-        order: -1; /* Іконка на мобільному буде зверху тексту */
+    .sidebar {
+        position: static;
+        order: -1; /* Puts the cooking timer on top for mobile screens */
     }
 }
