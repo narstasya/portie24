@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+     <div class="container">
+        <h1 id="title">Potato Timer</h1>
+
+        <div class="container2">
+            <p id="subtitle">The only timer you need for <br>perfect potatoes!</p>
+            <button id="startButton" class="btn">I'M HUNGRY, LET’S COOK!</button>
+
+            <div id="options" class="hidden">
+                <p id="question">What’s your potato craving today?</p>
+
+                <div class="choices">
+                    <div class="choice" data-type="Baked Potatoes" data-time="3600">
+                        <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-narstasya/refs/heads/main/assets/images/interaction/baked_potato_cropped.png" alt="Baked Potatoes">
+                        <p>Baked Potatoes</p>
+                    </div>
+                    <div class="choice" data-type="Mashed Potatoes" data-time="1200">
+                        <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-narstasya/refs/heads/main/assets/images/interaction/mashed_potatoes_cropped.png" alt="Mashed Potatoes">
+                        <p>Mashed Potatoes</p>
+                    </div>
+                    <div class="choice" data-type="Boiled Potatoes" data-time="1500">
+                        <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-narstasya/refs/heads/main/assets/images/interaction/boiled_potatoes_cropped.png" alt="Boiled Potatoes">
+                        <p>Boiled Potatoes</p>
+                    </div>
+                    <div class="choice" data-type="French Fries" data-time="900">
+                        <img src="https://raw.githubusercontent.com/hbk-bs/the-archives-narstasya/refs/heads/main/assets/images/interaction/french-fries_cropped.png" alt="French Fries">
+                        <p>French Fries</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="timerSection" class="hidden">
+                <img id="foodImage" src="https://raw.githubusercontent.com/hbk-bs/the-archives-narstasya/refs/heads/main/assets/images/interaction/french-fries.png" alt="Selected Dish"> 
+                <h2 id="timerDisplay">Time Left: 00:00</h2>
+                <p id="cookingQuote">Good things take time... unless you're fries.</p>
+                <button id="goBackButton" class="btn back-btn">Wait, I changed my mind!</button>
+            </div>
+        </div>
+    </div>
+     <script src="timer.js"></script>
+</body>
+</html>

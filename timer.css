@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+/* general */
+body {
+    font-family: 'Pixelify Sans', serif;
+    color: #7C4C4C;
+    text-align: center;
+    background-color: white;
+    padding: 3vw;
+}
+
+p {
+    line-height: 2.5rem;
+    font-size: 1.3rem;
+    color: #7C4C4C;
+    margin-top: 8rem;
+    margin-bottom: 1rem;
+}
+
+#question {
+    line-height: 2.5rem;
+    font-size: 1.3rem;
+    color: #7C4C4C;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    text-align: left;
+    color: white;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.container {
+    max-width: 90%;
+    width: 450px;
+    height: 550px;
+    margin: auto;
+    background: #f2cece;
+}
+
+.container2 {
+    width: 416px;
+    height: 458px;
+    margin: auto;
+    background: white;
+    border: 4px solid #DAACAC;
+}
+
+.hidden {
+    display: none;
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 0rem; 
+    margin-top: 0.2rem;
+}
+
+.choice {
+    width: 48%; 
+    text-align: center;
+    cursor: pointer;
+    padding: 0.2rem;
+    box-sizing: border-box; 
+}
+
+/* Зображення їжі */
+.choice img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    /* Плавне збільшення картинки за 0.2 секунди */
+    transition: transform 0.2s ease-in-out; 
+}
+
+/* Ефект наведення на вибір страви */
+.choice:hover img {
+    transform: scale(1.1);
+}
+
+.choice p {
+    margin: 0.5rem 0 0; 
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Кнопки */
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: #DFF2CE;
+    border: 5px solid #85AB61;
+    color: #85AB61;
+    font-family: 'Pixelify Sans', serif;
+    cursor: pointer;
+    margin-top: 0rem;
+    /* Змінив з 0s на 0.2s для красивого плавного перетікання кольорів */
+    transition: all 0.2s ease-in-out; 
+}
+
+/* Ефект наведення на кнопку */
+.btn:hover {
+    background-color: #85AB61;
+    color: #DFF2CE;
+    border: 5px solid #DFF2CE;
+    /* Кнопка злегка підстрибує вгору при наведенні */
+    transform: translateY(-2px); 
+}
+
+/* Ефект натискання (клик) */
+.btn:active {
+    /* Кнопка трохи вдавлюється, коли на неї тиснеш */
+    transform: translateY(1px); 
+}
+
+/* timer section */
+#foodImage {
+    width: 50%;
+    max-width: 150px;
+    height: auto;
+    margin: 1rem auto;
+}
+
+#cookingQuote {
+    font-style: italic;
+    color: #DAACAC;
+    margin-top: 1rem;
+}
+
+/* responsive adjustments */
+@media (max-width: 500px) {
+    .container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        font-size: 1rem;
+    }
+    
+    .choice {
+        width: 48%;
+    }
+}
