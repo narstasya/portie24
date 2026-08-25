@@ -8,13 +8,18 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Міняємо стандартну стрілочку миші на піксельний вказівник від браузера */
-    cursor: cell; 
+    /* Беремо файл прямо з нашої папки. 16 16 — точка кліку строго по центру */
+    cursor: url('cursor-focus.png') 16 16, auto; 
 }
 
-/* Робимо посилання теж з кастомним курсором */
-a, .portfolio-card {
-    cursor: crosshair; /* Курсор при наведенні на клікабельні елементи */
+/* Налаштування курсору для всіх клікабельних елементів */
+a, .portfolio-card, .popup-btn {
+    cursor: url('cursor-focus.png') 16 16, pointer; 
+}
+
+/* --- МАГІЯ КЛІКУ: Курсор змінює колір на рожево-шоколадний при натисканні --- */
+body:active, a:active, .portfolio-card:active, .popup-btn:active {
+    cursor: url('cursor-click.png') 16 16, auto;
 }
 
 .header {
