@@ -1,0 +1,132 @@
+/* Підключаємо сучасний, чистий шрифт Plus Jakarta Sans */
+@import url('https://googleapis.com');
+
+/* Загальні налаштування */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #faf6f6; /* Дуже м'який біло-рожевий відтінок для фону */
+    color: #7C4C4C;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Шапка */
+.header {
+    background-color: #f2cece; /* Твій фірмовий колір контейнера */
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-bottom: 4px solid #DAACAC;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #7C4C4C;
+    font-weight: 800;
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    color: #7C4C4C;
+    opacity: 0.9;
+}
+
+/* Контейнер для карток */
+.portfolio-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Відступи між картками */
+}
+
+/* Стиль картки-посилання */
+a.portfolio-card {
+    text-decoration: none; /* Прибираємо підкреслення тексту */
+}
+
+/* Сама картка */
+.portfolio-card {
+    background: white;
+    border: 3px solid #DAACAC;
+    border-radius: 16px;
+    padding: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    /* Плавний перехід для анімації наведення */
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Текст всередині картки */
+.card-content h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+    color: #7C4C4C;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #9c6868;
+    line-height: 1.5;
+}
+
+/* Іконка праворуч */
+.card-icon {
+    font-size: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Бадж "Новинка" для таймера */
+.badge {
+    background-color: #DFF2CE;
+    color: #85AB61;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* ЕФЕКТИ НАВЕДЕННЯ (Твоя інтерактивність) */
+.portfolio-card:hover {
+    transform: translateY(-5px); /* Картка плавно піднімається вгору */
+    box-shadow: 0 12px 24px rgba(124, 76, 76, 0.15); /* М'яка кольорова тінь */
+    border-color: #7C4C4C; /* Рамка стає темнішою */
+}
+
+/* При наведенні на картку, іконка всередині неї трохи збільшується */
+.portfolio-card:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Особливий стиль для картки з таймером, щоб виділити її */
+.highlight-card {
+    background: linear-gradient(145deg, #ffffff, #fff5f5);
+}
+
+/* Підвал */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: #DAACAC;
+}
+
+/* Адаптивність для телефонів */
+@media (max-width: 600px) {
+    .portfolio-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .card-icon {
+        order: -1; /* Іконка на мобільному буде зверху тексту */
+    }
+}
