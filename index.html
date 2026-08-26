@@ -229,56 +229,63 @@
 
     <!-- Скрипти для керування звуками -->
     <script>
+        
+    // Функція для залізобетонного відтворення коротких звуків без затримок та підвисань
+    function forcePlaySound(audioId) {
+        const audio = document.getElementById(audioId);
+        if (audio) {
+            audio.pause();       // Примусово зупиняємо попередній кадр звуку, щоб звільнити чергу
+            audio.currentTime = 0; // Миттєво скидаємо звук на початок
+            audio.play().catch(e => console.log("Audio playback interrupted or blocked"));
+        }
+    }
 
-// Логіка для попапу звуку
+    // Логіка для попапу звуку
     document.addEventListener("DOMContentLoaded", () => {
         const popup = document.getElementById('soundPopup');
         const btn = document.getElementById('enableSoundBtn');
 
-        btn.addEventListener('click', () => {
-            // "Прогріваємо" всі звуки німим стартом, щоб браузер дозволив їх відтворювати далі
-            const sounds = [
-                document.getElementById('hoverAudio'),
-                document.getElementById('pageClickAudio'),
-                document.getElementById('generalClickAudio')
-            ];
-            
-            sounds.forEach(sound => {
-                if (sound) {
-                    sound.play().then(() => {
-                        sound.pause();
-                        sound.currentTime = 0;
-                    }).catch(e => console.log("Audio prep failed", e));
-                }
-            });
+        if (btn && popup) {
+            btn.addEventListener('click', () => {
+                // "Прогріваємо" всі звуки німим стартом, щоб браузер дозволив їх відтворювати далі
+                const sounds = [
+                    document.getElementById('hoverAudio'),
+                    document.getElementById('pageClickAudio'),
+                    document.getElementById('generalClickAudio')
+                ];
+                
+                sounds.forEach(sound => {
+                    if (sound) {
+                        sound.play().then(() => {
+                            sound.pause();
+                            sound.currentTime = 0;
+                        }).catch(e => console.log("Audio prep failed", e));
+                    }
+                });
 
-            // Ховаємо попап
-            popup.style.display = 'none';
-        });
+                // Ховаємо попап
+                popup.style.display = 'none';
+            });
+        }
     });
 
-
+    // 1. Звук наведення (тепер працює миттєво і не відстає від мишки)
     function playHoverSound() {
-        const audio = document.getElementById('hoverAudio');
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log("Audio blocked"));
+        forcePlaySound('hoverAudio');
     }
 
-    // Звук переходу на сторінку таймера (ПОВНІСТЮ ВИПРАВЛЕНО)
+    // 2. Звук переходу на сторінку таймера (Надійна логіка з ID віджета)
     function playPageClick(event) {
         event.stopPropagation(); // Зупиняє загальний клік на фоні сайту
         event.preventDefault();  // Скасовує миттєвий перехід браузера
 
-        const audio = document.getElementById('pageClickAudio');
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log("Audio blocked"));
+        forcePlaySound('pageClickAudio'); // Запуск звуку кліку переходу
         
-        // НАДІЙНИЙ СПОСІБ: Беремо посилання строго з нашого віджета за його ID
         const widget = document.getElementById('timerWidget');
         if (widget) {
             const targetUrl = widget.getAttribute('href'); // Отримуємо "timer.html"
             
-            // Затримка 150мс, щоб встиг прозвучати клік, і примусовий перехід
+            // Затримка 150мс, щоб звук встиг почати грати перед зміною сторінки
             setTimeout(() => {
                 window.location.href = targetUrl;
             }, 150);
@@ -287,11 +294,12 @@
         }
     }
 
-    // Загальний звук кліку на все інше
+    // 3. Загальний звук кліку на все інше
     function playGeneralClick(event) {
-        const audio = document.getElementById('generalClickAudio');
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log("Audio blocked"));
+        // Перевіряємо, щоб клік був не по кнопці попапу, інакше звук дублюватиметься
+        if (event.target && event.target.id === 'enableSoundBtn') return;
+        
+        forcePlaySound('generalClickAudio');
     }
 </script>
 
