@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perspectives - Static p5.js Documentation</title>
+    <!-- Підключаємо твій загальний файл стилів головного сайту -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стилі для красивого відображення тексту описів */
+        .perspectives-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .text-block {
+            background: white;
+            border: 4px solid #7C4C4C;
+            padding: 2rem;
+            box-shadow: 8px 8px 0px #DAACAC;
+            text-align: left;
+        }
+        .text-block h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+            border-bottom: 3px solid #7C4C4C;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .text-block p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #7C4C4C;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+        
+        /* Твоя фірмова мишка для цієї сторінки */
+        body, html, a, button {
+            cursor: url('cursor-focus.png') 16 16, auto;
+        }
+        body:active, .back-home-btn:active {
+            cursor: url('cursor-click.png') 16 16, auto;
+        }
+        
+        /* Кнопка BACK */
+        .back-home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 0.8rem 1.5rem;
+            background-color: #fff5f5;
+            color: #7C4C4C;
+            border: 4px solid #7C4C4C;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            background-color: #7C4C4C;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка повернення на головну -->
+    <a href="index.html" class="back-home-btn">← BACK TO PORTFOLIO</a>
+
+    <header class="header" style="margin-top: 40px;">
+        <h1 class="logo">PERSPECTIVES</h1>
+        <p class="subtitle">Documentation of Static p5.js Projects</p>
+    </header>
+
+    <div class="perspectives-container">
+    
+    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №1 -->
+    <div class="text-block">
+        <h2>01. Static Coding & Foundations</h2>
+        <p>In these early university tasks, I focused on building compositions entirely through static code. Using pure p5.js primitives like <code>setup()</code>, <code>draw()</code>, <code>fill()</code>, <code>rect()</code>, and <code>ellipse()</code>, I explored geometric balance.</p>
+        
+        <!-- 👇 ТВОЯ ПЕРША КАРТИНКА З p5.js 👇 -->
+        <img src="images_perspectives/perspectives-art1-2.png" alt="Static p5.js Composition 1" class="project-screenshot">
+    </div>
+
+    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
+    <div class="text-block">
+        <h2>02. Grid Patterns & Proportions</h2>
+        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        
+        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
+        <img src="images_perspectives/perspectives-art1-3.png" alt="Static p5.js Composition 2" class="project-screenshot">
+    </div>
+
+</div>
+
+
+    <footer class="footer">
+        <p>© 2026 Perspectives Documentation</p>
+    </footer>
+
+</body>
+</html>
