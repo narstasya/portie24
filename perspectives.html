@@ -3,51 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perspectives - Static p5.js Documentation</title>
+    <title>Interactive HBK Canvas</title>
+    
     <!-- Підключаємо твій загальний файл стилів головного сайту -->
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* Стилі для красивого відображення тексту описів */
-        .perspectives-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .text-block {
-            background: white;
-            border: 4px solid #7C4C4C;
-            padding: 2rem;
-            box-shadow: 8px 8px 0px #DAACAC;
-            text-align: left;
-        }
-        .text-block h2 {
-            margin-top: 0;
-            font-size: 1.6rem;
-            font-weight: 800;
-            border-bottom: 3px solid #7C4C4C;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        .text-block p {
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: #7C4C4C;
-            margin-top: 15px;
-            margin-bottom: 0;
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #faf6f6;
+            cursor: url('cursor-focus.png') 16 16, auto; 
+            overflow: auto !important; 
         }
         
-        /* Твоя фірмова мишка для цієї сторінки */
-        body, html, a, button {
-            cursor: url('cursor-focus.png') 16 16, auto;
-        }
         body:active, .back-home-btn:active {
-            cursor: url('cursor-click.png') 16 16, auto;
+            cursor: url('cursor-click.png') 16 16, auto; 
         }
         
-        /* Кнопка BACK */
         .back-home-btn {
             position: fixed;
             top: 20px;
@@ -56,112 +29,121 @@
             background-color: #fff5f5;
             color: #7C4C4C;
             border: 4px solid #7C4C4C;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: sans-serif;
             font-weight: bold;
             text-decoration: none;
             z-index: 9999;
+            cursor: url('cursor-focus.png') 16 16, pointer;
             transition: transform 0.1s ease;
         }
+        
         .back-home-btn:hover {
             transform: translateY(-2px);
             background-color: #7C4C4C;
             color: white;
         }
 
-                /* НАЛАШТУВАННЯ ДЛЯ НОРМАЛЬНОГО РОЗМІРУ КАРТИНОК  */
-        .project-screenshot {
-            display: block;
-            width: 100%;          /* Картинка займе всю ширину білого текстового блоку */
-            max-width: 500px;     /* Обмежуємо максимальну ширину (робимо її акуратною, не на весь екран) */
-            height: auto;         /* Пропорції збережуться автоматично, без розтягування */
-            margin: 1.5rem auto 0 auto; /* Відступ зверху та центрування картинки по середині */
-            border: 4px solid #7C4C4C;  /* Твоя фірмова бруталістська шоколадна рамка */
-            box-shadow: 4px 4px 0px #DAACAC; /* М'яка ретро-тінь під картинкою */
+        /* Картка документації */
+        .text-block {
+            max-width: 600px;
+            margin: 6rem auto 4rem auto;
+            background: white;
+            border: 4px solid #7C4C4C;
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0px #DAACAC;
+            text-align: left;
+            font-family: sans-serif;
         }
 
+        .text-block h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #7C4C4C;
+            border-bottom: 3px solid #7C4C4C;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .text-block p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #7C4C4C;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        /* Контейнер для ідеального розміру iframe */
+        #canvas-holder {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Оформлюємо твоє віконце iframe у бруталістському стилі сайту */
+        #canvas-holder iframe {
+            width: 500px;            
+            height: 400px;
+            border: 4px solid #7C4C4C;  
+            box-shadow: 6px 6px 0px #DAACAC; 
+            image-rendering: pixelated;
+            background-color: #faf6f6;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Кнопка повернення на головну -->
-    <a href="index.html" class="back-home-btn">← BACK TO PORTFOLIO</a>
-
-    <header class="header" style="margin-top: 40px;">
-        <h1 class="logo">PERSPECTIVES</h1>
-        <p class="subtitle">Documentation of Static p5.js Projects</p>
-    </header>
-
-    <div class="perspectives-container">
     
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №1 -->
+    <a href="index.html" class="back-home-btn">← BACK</a>
+
     <div class="text-block">
-        <h2>01. Static Coding & Foundations</h2>
-        <p>In these early university tasks, I focused on building compositions entirely through static code. Using pure p5.js primitives like <code>setup()</code>, <code>draw()</code>, <code>fill()</code>, <code>rect()</code>, and <code>ellipse()</code>, I explored geometric balance.</p>
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
         
-        <!-- 👇 ТВОЯ ПЕРША КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-2.png" alt="Static p5.js Composition 1" class="project-screenshot">
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/eg0D4H2I8" scrolling="no" allowtransparency="true"></iframe>
+        </div>
     </div>
 
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
     <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
         
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-3.png" alt="Static p5.js Composition 2" class="project-screenshot">
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/EWDJSnNYy" scrolling="no" allowtransparency="true"></iframe>
+        </div>
     </div>
 
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №3 -->
     <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
         
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-4.png" alt="Static p5.js Composition 2" class="project-screenshot">
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/uK838gQcT" scrolling="no" allowtransparency="true"></iframe>
+        </div>
     </div>
 
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
     <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
         
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-5.png" alt="Static p5.js Composition 2" class="project-screenshot">
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/B3SUO3tb0" scrolling="no" allowtransparency="true"></iframe>
+        </div>
     </div>
 
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
     <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
         
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-6.png" alt="Static p5.js Composition 2" class="project-screenshot">
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/7EMOqXEba" scrolling="no" allowtransparency="true"></iframe>
+        </div>
     </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1-7.png" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>02. Grid Patterns & Proportions</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_perspectives/perspectives-art1.png" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-</div>
-
-
-    <footer class="footer">
-        <p>© 2026 Perspectives Documentation</p>
-    </footer>
 
 </body>
 </html>
