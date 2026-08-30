@@ -3,52 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Interactive HBK Canvas</title>
+    
+    <!-- Підключаємо твій загальний файл стилів головного сайту -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #faf6f6;
+            cursor: url('cursor-focus.png') 16 16, auto; 
+            overflow: auto !important; 
+        }
+        
+        body:active, .back-home-btn:active {
+            cursor: url('cursor-click.png') 16 16, auto; 
+        }
+        
+        .back-home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 0.8rem 1.5rem;
+            background-color: #fff5f5;
+            color: #7C4C4C;
+            border: 4px solid #7C4C4C;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 9999;
+            cursor: url('cursor-focus.png') 16 16, pointer;
+            transition: transform 0.1s ease;
+        }
+        
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            background-color: #7C4C4C;
+            color: white;
+        }
+
+        /* Картка документації */
+        .text-block {
+            max-width: 600px;
+            margin: 6rem auto 4rem auto;
+            background: white;
+            border: 4px solid #7C4C4C;
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0px #DAACAC;
+            text-align: left;
+            font-family: sans-serif;
+        }
+
+        .text-block h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #7C4C4C;
+            border-bottom: 3px solid #7C4C4C;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .text-block p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #7C4C4C;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        /* Контейнер для ідеального розміру iframe */
+        #canvas-holder {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Оформлюємо твоє віконце iframe у бруталістському стилі сайту */
+        #canvas-holder iframe {
+            width: 500px;            
+            height: 400px;
+            border: 4px solid #7C4C4C;  
+            box-shadow: 6px 6px 0px #DAACAC; 
+            image-rendering: pixelated;
+            background-color: #faf6f6;
+        }
+    </style>
 </head>
 <body>
     
     <a href="index.html" class="back-home-btn">← BACK</a>
 
+    <div class="text-block">
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
+        
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/0JMqjiX0f" scrolling="no" allowtransparency="true"></iframe>
+        </div>
+    </div>
 
-    <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #faf6f6;
-        cursor: url('cursor-focus.png') 16 16, auto; /* Спокійний стан — зелений */
-    }
-    
-    .back-home-btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        padding: 0.8rem 1.5rem;
-        background-color: #fff5f5;
-        color: #7C4C4C;
-        border: 4px solid #7C4C4C;
-        font-family: sans-serif;
-        font-weight: bold;
-        text-decoration: none;
-        z-index: 9999;
-        cursor: url('cursor-focus.png') 16 16, pointer;
-        transition: transform 0.1s ease;
-    }
-    
-    .back-home-btn:hover {
-        transform: translateY(-2px);
-        background-color: #7C4C4C;
-        color: white;
-    }
+    <div class="text-block">
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
+        
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/iy6jjODcz" scrolling="no" allowtransparency="true"></iframe>
+        </div>
+    </div>
 
-    /* 👇 ОНОВЛЕНО: ДОДАНО МАГІЮ КЛІКУ 👇 */
-    body:active, .back-home-btn:active {
-        cursor: url('cursor-click.png') 16 16, auto; /* Стан кліку — шоколадний */
-    }
-</style>
-
-
-    <script src="https://cloudflare.com"></script>
+    <div class="text-block">
+        <h2>03. Live Motion Project</h2>
+        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
+        
+        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <div id="canvas-holder">
+            <iframe src="https://editor.p5js.org/narstasya/full/0TD_2N2lZ" scrolling="no" allowtransparency="true"></iframe>
+        </div>
+    </div>
 
 </body>
 </html>
