@@ -3,51 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perspectives - Static p5.js Documentation</title>
+    <title>Project Presentation & Media</title>
+    
     <!-- Підключаємо твій загальний файл стилів головного сайту -->
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* Стилі для красивого відображення тексту описів */
-        .perspectives-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .text-block {
-            background: white;
-            border: 4px solid #7C4C4C;
-            padding: 2rem;
-            box-shadow: 8px 8px 0px #DAACAC;
-            text-align: left;
-        }
-        .text-block h2 {
-            margin-top: 0;
-            font-size: 1.6rem;
-            font-weight: 800;
-            border-bottom: 3px solid #7C4C4C;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        .text-block p {
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: #7C4C4C;
-            margin-top: 15px;
-            margin-bottom: 0;
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #faf6f6;
+            cursor: url('cursor-focus.png') 16 16, auto; 
+            overflow: auto !important; /* Дозволяємо скрол сторінки вниз */
         }
         
-        /* Твоя фірмова мишка для цієї сторінки */
-        body, html, a, button {
-            cursor: url('cursor-focus.png') 16 16, auto;
-        }
         body:active, .back-home-btn:active {
-            cursor: url('cursor-click.png') 16 16, auto;
+            cursor: url('cursor-click.png') 16 16, auto; 
         }
         
-        /* Кнопка BACK */
         .back-home-btn {
             position: fixed;
             top: 20px;
@@ -56,112 +29,202 @@
             background-color: #fff5f5;
             color: #7C4C4C;
             border: 4px solid #7C4C4C;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: sans-serif;
             font-weight: bold;
             text-decoration: none;
             z-index: 9999;
+            cursor: url('cursor-focus.png') 16 16, pointer;
             transition: transform 0.1s ease;
         }
+        
         .back-home-btn:hover {
             transform: translateY(-2px);
             background-color: #7C4C4C;
             color: white;
         }
 
-                /* НАЛАШТУВАННЯ ДЛЯ НОРМАЛЬНОГО РОЗМІРУ КАРТИНОК  */
-        .project-screenshot {
-            display: block;
-            width: 100%;          /* Картинка займе всю ширину білого текстового блоку */
-            max-width: 500px;     /* Обмежуємо максимальну ширину (робимо її акуратною, не на весь екран) */
-            height: auto;         /* Пропорції збережуться автоматично, без розтягування */
-            margin: 1.5rem auto 0 auto; /* Відступ зверху та центрування картинки по середині */
-            border: 4px solid #7C4C4C;  /* Твоя фірмова бруталістська шоколадна рамка */
-            box-shadow: 4px 4px 0px #DAACAC; /* М'яка ретро-тінь під картинкою */
+        /* Головний бруталістський блок-контейнер */
+        .content-block {
+            max-width: 650px;
+            margin: 6rem auto 4rem auto;
+            background: white;
+            border: 4px solid #7C4C4C;
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0px #DAACAC;
+            font-family: sans-serif;
+            color: #7C4C4C;
         }
 
+        .content-block h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+            border-bottom: 3px solid #7C4C4C;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .content-block p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-top: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .media-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* слайд шоу */
+        .slider-container {
+            display: flex;
+            overflow-x: auto; /* Вмикаємо горизонтальну прокрутку */
+            scroll-snap-type: x mandatory; /* Магнітна фіксація на кожному фото */
+            scroll-behavior: smooth;
+            border: 4px solid #7C4C4C;
+            box-shadow: 5px 5px 0px #DAACAC;
+            background: #fff5f5;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Налаштування скроллбару, щоб він виглядав по-ретро */
+        .slider-container::-webkit-scrollbar {
+            height: 10px;
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: #fff5f5;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background: #7C4C4C;
+            border: 1px solid #fff5f5;
+        }
+
+        .slider-container img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: contain; /* Картинка не обрізається */
+            flex-shrink: 0; /* Фото не стискаються, а стають у ряд */
+            scroll-snap-align: start;
+        }
+
+        /* ----------------------------------------- */
+        /* НАЛАШТУВАННЯ ВІДЕО                        */
+        /* ----------------------------------------- */
+        .video-wrapper {
+            border: 4px solid #7C4C4C;
+            box-shadow: 5px 5px 0px #DAACAC;
+            background: black;
+            overflow: hidden;
+            line-height: 0; /* Прибирає зайві мікро-відступи знизу */
+        }
+
+        .video-wrapper video, .video-wrapper iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Кнопка повернення на головну -->
-    <a href="index.html" class="back-home-btn">← BACK TO PORTFOLIO</a>
-
-    <header class="header" style="margin-top: 40px;">
-        <h1 class="logo">PERSPECTIVES</h1>
-        <p class="subtitle">Documentation of Static p5.js Projects</p>
-    </header>
-
-    <div class="perspectives-container">
     
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №1 -->
-    <div class="text-block">
-        <h2>1.1 Algorithm from Nicole</h2>
-        <p>In these early university tasks, I focused on building compositions entirely through static code. Using pure p5.js primitives like <code>setup()</code>, <code>draw()</code>, <code>fill()</code>, <code>rect()</code>, and <code>ellipse()</code>, I explored geometric balance.</p>
+    <a href="index.html" class="back-home-btn">← BACK</a>
+
+    <div class="content-block">
+        <!-- 1. ТЕКСТОВИЙ БЛОК -->
+        <h2>04. Visual & Video Documentation</h2>
+        <p>This section contains full media documentation of the project. Scroll through the horizontal pixel slide show below to see early interface prototypes and wireframes, followed by the final video walkthrough demonstration.</p>
         
-        <!-- 👇 ТВОЯ ПЕРША КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/1.jpg" alt="Static p5.js Composition 1" class="project-screenshot">
-    </div>
+        <!-- 2. СЛАЙД-ШОУ З ФОТО (Прокрутка ліворуч-праворуч) -->
+        <div class="media-title">📸 Project Gallery (Swipe/Scroll)</div>
+        <div class="slider-container">
+            <!-- Заміни paths на свої реальні картинки з папки images -->
+            <img src="images_pc/IMG_6784.JPG" alt="Slide 2">
+            <img src="images_pc/IMG_6895.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_6904.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7024.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7027.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7032.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7046.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7048.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7055.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7056.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_4604.PNG" alt="Slide 3">
+            <img src="images_pc/IMG_7058.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7059.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7076.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7078.JPG" alt="Slide 3">
+            <img src="images_pc/1343de82-0972-42df-ab71-3736f47a8639.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7079.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7080.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7089.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7093.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7095.JPG" alt="Slide 3">
+            <img src="images_pc/44.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7096.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7097.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7098.JPG" alt="Slide 3">
+            <img src="images_pc/IMG_7105.JPG" alt="Slide 3">
+        </div>
 
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>1.2 Algorithm from Nataliya</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
+        <!-- 3. ГАЛЕРЕЯ ДЛЯ ВІДЕО (Прокрутка ліворуч-праворуч) -->
+        <div class="media-title">🎬 Video Gallery (Swipe/Scroll)</div>
         
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/2.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
+        <!-- Застосовуємо такий самий клас слайдера, але з чорним фоном для кінематографічності -->
+        <div class="slider-container" style="background: black;">
+            
+            <!-- ВІДЕО 1 (локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_6786.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- ВІДЕО 2 (наприклад, ще один локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_6789.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- ВІДЕО 3 (наприклад, ще один локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_7063.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- ВІДЕО 4 (наприклад, ще один локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_7082.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- ВІДЕО 5 (наприклад, ще один локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_7099.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- ВІДЕО 6 (наприклад, ще один локальний файл) -->
+            <div class="video-slide" style="width: 100%; flex-shrink: 0; scroll-snap-align: start; line-height: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 350px;">
+                    <source src="images_pc/IMG_7100.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №3 -->
-    <div class="text-block">
-        <h2>1.3 Algorithm from Chris</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/3.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>2.1 Algorithm from Nicole</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/4.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>3.1 Algorithm from Nadiia</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/5.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>3.2 Algorithm from Sofiia</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/6.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-    <!-- БЛОК ОПИСУ СТАТИЧНОЇ РОБОТИ №2 -->
-    <div class="text-block">
-        <h2>3.3 Algorithm from Maryia</h2>
-        <p>The main takeaway was mastering absolute coordinate calculation on the digital canvas. This static groundwork laid the foundation for understanding screen proportions.</p>
-        
-        <!-- 👇 ТВОЯ ДРУГА КАРТИНКА З p5.js 👇 -->
-        <img src="images_algorythm/7.jpg" alt="Static p5.js Composition 2" class="project-screenshot">
-    </div>
-
-</div>
-
-
-    <footer class="footer">
-        <p>© 2026 Perspectives Documentation</p>
-    </footer>
 
 </body>
 </html>

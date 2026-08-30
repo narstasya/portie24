@@ -79,6 +79,26 @@ body:active, a:active, .portfolio-card:active, .popup-btn:active {
     color: #7C4C4C;
 }
 
+/* 1. СКИДАЄМО СИНІЙ КОЛІР ДЛЯ ВСІХ ПОСИЛАНЬ-КАРТОК */
+.portfolio-card {
+    text-decoration: none; /* Прибираємо некрасиве синє підкреслення літер */
+    display: block;        /* Робимо так, щоб уся картка була клікабельною, а не тільки текст */
+    color: #7C4C4C;        /* Повертаємо твій фірмовий шоколадний колір для картки */
+}
+
+/* 2. ПРИМУСОВО ФАРБУЄМО ЗАГОЛОВКИ ВСЕРЕДИНІ КАРТОК */
+.portfolio-card h2 {
+    color: #7C4C4C !important; /* !important гарантує, що синій колір браузера не прорветься знову */
+    text-decoration: none;
+}
+
+/* 3. ПРИМУСОВО ФАРБУЄМО ТЕКСТ ОПИСУ ВСЕРЕДИНІ КАРТОК */
+.portfolio-card p {
+    color: #7C4C4C !important; /* Повертаємо шоколадний колір для дрібного тексту */
+    text-decoration: none;
+}
+
+
 /* /* RIGHT COLUMN: Sidebar Setup */ */
 .sidebar {
     position: sticky;
