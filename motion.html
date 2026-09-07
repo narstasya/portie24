@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motion</title>
-    
-    <!-- Підключаємо твій загальний файл стилів головного сайту -->
     <link rel="stylesheet" href="style.css">
-    
     <style>
+
         body, html {
             margin: 0;
             padding: 0;
@@ -43,7 +41,6 @@
             color: white;
         }
 
-        /* Картка документації */
         .text-block {
             max-width: 600px;
             margin: 6rem auto 4rem auto;
@@ -73,14 +70,12 @@
             margin-bottom: 0;
         }
 
-        /* Контейнер для ідеального розміру iframe */
         #canvas-holder {
             margin-top: 2rem;
             display: flex;
             justify-content: center;
         }
 
-        /* Оформлюємо твоє віконце iframe у бруталістському стилі сайту */
         #canvas-holder iframe {
             width: 500px;            
             height: 400px;
@@ -89,41 +84,36 @@
             image-rendering: pixelated;
             background-color: #faf6f6;
         }
+
     </style>
 </head>
 <body>
     
-    <a href="index.html" class="back-home-btn">← BACK</a>
+    <a href="index.html" class="back-home-btn">← BACK TO PORTFOLIO</a>
 
-    <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+    <header class="header" style="margin-top: 40px;">
+        <h1 class="logo">Motion in P5.js</h1>
+        <p class="subtitle">What is it, how it works and which results is possible to get.</p>
+    </header>
+
+    <p>Here, you are invited simply to observe. There is no more pressing buttons, clicking, or scrolling. Just relax and watch these three motion art pieces of mine running on an infinite loop.
+    </p>
+
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/0JMqjiX0f" scrolling="no" allowtransparency="true"></iframe>
         </div>
-    </div>
 
-    <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/iy6jjODcz" scrolling="no" allowtransparency="true"></iframe>
         </div>
-    </div>
 
-    <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/0TD_2N2lZ" scrolling="no" allowtransparency="true"></iframe>
         </div>
-    </div>
 
+        <footer class="footer">
+        <p>2026 Algorithm | Documentation</p>
+    </footer>
+    
 </body>
 </html>
