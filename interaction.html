@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interaction</title>
-    
-    <!-- Підключаємо твій загальний файл стилів головного сайту -->
     <link rel="stylesheet" href="style.css">
-    
     <style>
+
         body, html {
             margin: 0;
             padding: 0;
@@ -43,7 +41,6 @@
             color: white;
         }
 
-        /* Картка документації */
         .text-block {
             max-width: 600px;
             margin: 6rem auto 4rem auto;
@@ -73,14 +70,12 @@
             margin-bottom: 0;
         }
 
-        /* Контейнер для ідеального розміру iframe */
         #canvas-holder {
             margin-top: 2rem;
             display: flex;
             justify-content: center;
         }
 
-        /* Оформлюємо твоє віконце iframe у бруталістському стилі сайту */
         #canvas-holder iframe {
             width: 500px;            
             height: 400px;
@@ -89,47 +84,59 @@
             image-rendering: pixelated;
             background-color: #faf6f6;
         }
+
     </style>
 </head>
 <body>
     
     <a href="index.html" class="back-home-btn">← BACK</a>
 
+    <header class="header" style="margin-top: 40px;">
+        <h1 class="logo">Interaction in P5.js</h1>
+        <p class="subtitle">What is it, how it works and which results is possible to get.</p>
+    </header>
+
     <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
+        <p>
+            To create static generative drawings in p5.js, I primarily relied on two core functions: setup() and draw(). However, the next step in our curriculum required us to make these compositions dynamic, introducing conditional logic (if/else statements) to trigger movement and state shifts. Personally, this was a major hurdle. Having absolutely no prior background in JavaScript made understanding and writing conditions incredibly difficult, especially since clear, beginner-friendly examples were hard to find. Despite these challenges, I managed to build several functional prototypes.
+        </p>
+    </div>
+
+    <div class="text-block">
+        <p>
+            For the first project, you need to click directly inside the p5.js canvas area to focus the window, and then press the **H**, **B**, or **K** keys on an English keyboard layout. You can press them multiple times. Give it a try and see what happens!
+        </p>
         
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/t4vzwM-36" scrolling="no" allowtransparency="true"></iframe>
         </div>
     </div>
 
     <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <p>
+            The second piece is called "Fish Eye." It generates a grid of chocolate-brown circles where the proximity to the cursor determines their size: the closer a circle is to the mouse center, the larger it scales. Furthermore, within a specific radius around the cursor, the elements dynamically shift their color to an accent green.
+        </p>
+
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/CA6LUPF0K" scrolling="no" allowtransparency="true"></iframe>
         </div>
     </div>
 
     <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <p>
+            The third project features a very intuitive interaction: simply click on the pixelated cactus in the center and watch what unfolds!
+        </p>
+
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/sHpNCO-7l" scrolling="no" allowtransparency="true"></iframe>
         </div>
     </div>
 
     <div class="text-block">
-        <h2>03. Live Motion Project</h2>
-        <p>This is a live canvas rendering shapes in real-time using the p5.js loop. Click on the canvas and press <strong>H</strong>, <strong>B</strong>, or <strong>K</strong> on your keyboard to release letters cloud.</p>
-        
-        <!-- 👇 ЖИВА ТРАНСЛЯЦІЯ ТВOГО ПРОЄКТУ ЧЕРЕЗ IFRAME 👇 -->
+        <p>
+            The final assignment is a conceptual interactive poem controlled by two switches. The toggle switch on the left alternates between two extreme psychological states - manic brightness and depressive darkness - with a simple click. The square switch on the right activates the "neutral" mode. Just like inside our minds, we carry a relentless stream of thoughts; immediately after seeing everything in pitch black, something shifts within us, and suddenly we feel like we know exactly how the world works, ready to beat the blues and bring so many ideas into reality that it keeps us awake at night. This black-and-white thinking, these two volatile states, can fluctuate so rapidly... sometimes I truly wished I had a master button right there to balance it all out.
+        </p>
+
         <div id="canvas-holder">
             <iframe src="https://editor.p5js.org/narstasya/full/LIiwJvKb4" scrolling="no" allowtransparency="true"></iframe>
         </div>
